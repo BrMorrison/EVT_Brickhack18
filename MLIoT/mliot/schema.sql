@@ -2,8 +2,8 @@ drop table if exists characters;
 create table characters (
     id integer primary key autoincrement,
     hw_id integer not null,
-    nickname text not null,
-    'text' text not null,
+    nickname text,
+    'text' text,
     hunger integer not null,
     happiness integer not null,
     energy integer not null,
