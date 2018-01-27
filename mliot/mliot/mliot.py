@@ -2,6 +2,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash
 import os
 import sqlite3
+# from wtforms import Form, BooleanField, StringField, PasswordField, validators
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -59,9 +60,11 @@ def initdb_handler():
 @app.route('/')
 def news_feed():
     # get the database
+    # db = getDatabase(app.config['DATABASE'])
     # run the sql command to get the status updates
     # posts = cur.fetchall()
-    return render_template('newsfeed.html', posts=posts)
+    # return render_template('newsfeed.html', posts=posts)
+    return "Hello World!"
 
 
 @app.route('/profile')
@@ -72,13 +75,14 @@ def user_profile():
     return render_template('profile.html', chars=character_list)
 
 
-@app.route('/addCharacter', method=['POST'])
+@app.route('/addCharacter', methods=['POST'])
 def add_character():
     if not session.get('logged_in'):
         abort(401)
     db = getDatabase(app.config["DATABASE"])
-    db.execute('insert into characters () values (?, ?)',
-                [request.form[]])
+    # also grab the unassigned characters in connected nodes
+    #db.execute('insert into characters (hw_id, hunger, happiness, energy) values (?, ?)',
+    #           [request.form[]])
     db.commit()
     flash('Added a new character!')
 
