@@ -1,0 +1,5 @@
+mylittleIOTnode.txt : game, IOT node that has no purpose except for being IOT node
+ - each beaglebone is the hub (each hub is different in some day)
+ - roku webserver heroku has twitter-like website serving multiple nodes
+ - node sends data from multiple characters
+ - 
