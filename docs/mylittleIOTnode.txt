@@ -3,3 +3,45 @@ mylittleIOTnode.txt : game, IOT node that has no purpose except for being IOT no
  - roku webserver heroku has twitter-like website serving multiple nodes
  - node sends data from multiple characters
  - 
+
+ characters:
+    - char types
+        - arduino x4
+    - resource 1: button control
+    - resource 2: interconnectivity (i.e. having multiple characters in community)
+    - resource 3
+    - id name
+    - hardware collision
+    - *personality
+
+node:
+    - array of char characters, dynamic changing
+    - node name/id
+    - *theme
+    - function:
+        - write_message()
+        - interact()
+        - 
+    - node types:
+        - beaglebones
+        - rpi3
+
+website:
+    - flask framework
+    - user home/profile
+        - humans
+        - nodes
+        - chars
+             - char@node: follow char as it moves between nodes
+    - view of other profiles
+    - interact with char (other profile)
+    - *user messaging (other profile)
+    - *interact with node (other profile)
+    - *view user's posts
+
+    ************ BACK END WEBSITE *****************
+    -- feed
+    -- user system
+    -- interactive web game (feeding characters)
+    -- user/friend system
+    -- *stats
