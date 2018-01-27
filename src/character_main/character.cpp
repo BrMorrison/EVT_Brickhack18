@@ -15,7 +15,10 @@
 
 //constructor for i2c slave id
 Character::Character(unsigned byte deviceID)
- :i2c_id(deviceID), deathCNT(0){}
+ :i2c_id(deviceID), deathCNT(0), faceNo(deviceID) 
+ {
+    rebirth();
+  }
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
@@ -26,6 +29,7 @@ void character::rebirth()
   set_energy(100);
   set_happiness(100);
   set_hunger(100);
+  set_cmd(0x00);
   setLifeTrue();
 }
 
@@ -168,7 +172,7 @@ void character::reset_deathCNT()
   deathCNT = 0;
 }
 
-void increaseDeathCNT()
+void character::increaseDeathCNT()
 {
   if (deathCNT == MaxDeath)
   {
@@ -179,4 +183,23 @@ void increaseDeathCNT()
     deathCNT++;
   }
 }
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+/*faceNo functions */
+
+unsigned int character::get_faceNo() { return faceNo; }
+void character::set_faceNo(unsigned int face) {faceNo = face;}
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+/*cmd functions */
+unsigned byte character::get_cmd( return cmd; }
+void character::set_cmd(unsigned byte command) {cmd = command;}
 

@@ -35,14 +35,28 @@ class character
     unsigned int get_deathCNT();
     void reset_deathCNT();
     void increaseDeathCNT();
+
+    //faceNo functions
+    unsigned int get_faceNo();
+    void set_faceNo(unsigned int face);
+
+    //cmd functions
+    unsigned byte get_cmd();
+    void set_cmd();
     
   private:
+
+    char message[80];
+    
     unsigned byte i2c_id; //slave id;
+    unsigned byte cmd;    //i2c commmand;
     
     unsigned int energy;
     unsigned int hunger;
     unsigned int happiness;
     unsigned int deathCNT;
+
+    unsigned int faceNo;
     
     bool life;
 
