@@ -77,7 +77,7 @@ def add_entry():
 def login():
     error = None 
     if request.method == 'POST':
-        if request.form['username'] != app.config['USERAME']:
+        if request.form['username'] != app.config['USERNAME']:
             error = 'Invalid username'
         elif request.form['password'] != app.config['PASSWORD']:
             error = 'Invalid password'
@@ -93,3 +93,4 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('show_entries'))
+
