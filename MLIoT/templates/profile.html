@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="../static/test.css">
+</head>
+<body>
+
+  <h1>{{ USER }}'s Profile</h1>
+  <h3>This is a test.</h3>
+
+  <table>
+    <tr>
+      <th>Sudo Name</th>
+      <th>Sudo Hunger</th>
+      <th>Sudo Happiness</th>
+      <th>Sudo Energy</th>
+    </tr>
+    {% for name, values in chars.iteritems() %}
+    <tr>
+      <td>{{ name }}</td>
+      <td>{{ values[0] }}</td>
+      <td>{{ values[1] }}</td>
+      <td>{{ values[2] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <button type="button" onclick=OnClick()>Click Me!</button>
+
+</body>
+</html>
+
+<script src="../static/test.js"></script>
