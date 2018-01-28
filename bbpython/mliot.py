@@ -11,7 +11,7 @@ def main():
 	for x in range(1,MaxListSize+1):
 		charList[x]=DictFormat
 
-	print(charList)
+	#print(charList)
 
 
 

@@ -2,8 +2,18 @@ from lib.Adafruit_I2C import *
 
 #i2c = Adafruit_I2C(0x77)
 
-cmdDict={'cmd':0x01, 'id':0x01, 'energy':0x02,'deathFlag':0x04,'msgLen':0x08, 'msg':0x0F}
+getDict={'cmd':0x01, 'id':0x01, 'energy':0x02,'deathFlag':0x04,'msgLen':0x08, 'msg':0x0F}
+setDict={'Hunger':0x02, 'Happiness':0x04}
 
+def getCharData(deviceID,command):
+	i2c = Adafruit_I2C(deviceID)
+	retval=readS16(getDict['cmd'],getDict[command])
+	return retval
+
+def setCharData(deviceID,dataType, dataValue):
+	i2c = Adafruit_I2C(deviceID)
+	write16(setDict[dataType],dataValue)
+	return True
 
 
 
