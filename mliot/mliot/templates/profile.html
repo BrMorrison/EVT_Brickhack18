@@ -15,12 +15,12 @@
       <th>Sudo Happiness</th>
       <th>Sudo Energy</th>
     </tr>
-    {% for name, values in chars.items() %}
+    {% for char in chars %}
     <tr>
-      <td>{{ name }}</td>
-      <td>{{ values[0] }}</td>
-      <td>{{ values[1] }}</td>
-      <td>{{ values[2] }}</td>
+      <td>{{ char['id'] }}</td>
+      <td>{{ char['hunger'] }}</td>
+      <td>{{ char['happiness'] }}</td>
+      <td>{{ char['energy'] }}</td>
     </tr>
     {% endfor %}
   </table>
