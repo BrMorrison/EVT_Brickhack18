@@ -1,0 +1,9 @@
+Command Definitions for Arduino
+
+ - status_cmd (0x01): request the status of the arduino (i.e. hunger, happiness, energy, and "tweetable" message);
+ - rebirth_cmd (0x02): rebirths the device
+ - happiness_cmd (0x03): command to increase the happiness based on how many other characters are on the node
+    - send number of devices on the node.
+ - energy_cmd (0x04): command to increase the energy because of user "interacting" with the device on web service 
+    - send number of times clicked to increase energy points
+ 
