@@ -12,13 +12,14 @@ def pingServer():
 		return False
 	
 
-def setData(charlist):
+def setWebData(charlist,MAX_LIST_SIZE):
 	pass
 
-def getData(charlist):
+def getWebData(charlist,MAX_LIST_SIZE):
+	hostname= 'google.com'
 	buffer = StringIO()
 	c = pycurl.Curl()
-	c.setopt(c.URL, 'http://pycurl.io/')
+	c.setopt(c.URL, hostname+'/'+'')#TODO add in 
 	c.setopt(c.WRITEDATA, buffer)
 	c.perform()
 	c.close()
@@ -28,3 +29,6 @@ def getData(charlist):
 	# In Python 2, we can print it without knowing what the encoding is.
 	print(body)
 	pass
+
+
+# example localhost:5000/new_char?id=1&hunger=50&happiness=25&energy=2
