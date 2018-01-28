@@ -39,7 +39,6 @@ class character
     void set_happiness(unsigned int happy);
     void add_happiness();
     void takeAway_happiness();
-    void takeAway_happinessII(unsigned int decrement);
 
     //life functions;
     bool get_life();
@@ -60,7 +59,7 @@ class character
     //message functions
     void update_message();
     void set_message(char message_choice);
-    char get_message();
+    char* get_message();
     
   private:
 

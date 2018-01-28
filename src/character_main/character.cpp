@@ -7,11 +7,14 @@
  */
 
 #include "character.h"
+#include <String.h>
 
 #define FullHunger (100)
 #define FullHappiness (100)
 #define FullEnergy (100)
 #define MaxDeath (10000)
+
+enum state {HUNGER = 0, HAPPINESS, ENERGY};
 
 //constructor for i2c slave id
 character::character(unsigned char deviceID)
@@ -147,6 +150,18 @@ void character::takeAway_happiness()
   }
 }
 
+void character::takeAway_happinessII(unsigned int decrement)
+{
+  if (happiness == 0)
+  {
+    takeAway_energy();
+  }
+  else
+  {
+    happiness -= decrement;
+  }
+}
+
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
@@ -211,4 +226,104 @@ void character::set_faceNo(unsigned int face) {faceNo = face;}
 /*cmd functions */
 unsigned char character::get_cmd() { return cmd; }
 void character::set_cmd(unsigned char command) {cmd = command;}
+
+
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+/* message functions */
+void character::update_message()
+{
+  state precedence;
+  if (get_hunger() < get_energy())
+  {
+      if (get_hunger() < get_happiness())
+      {
+        precedence = HUNGER;
+      }
+
+      else if (get_happiness() < get_energy())
+      {
+        precedence = HAPPINESS;
+      }
+  }
+
+  else if (get_energy() < get_happiness())
+  {
+    precedence = ENERGY;
+  }
+
+  else
+  {
+    precedence = HAPPINESS;
+  }
+
+  switch (precedence)
+  {
+    case HUNGER:
+      switch(get_hunger() / 25)
+      {
+        case 0:
+          set_message(0b00010001);
+          break;
+        case 1:
+          set_message(0b00010010);
+          break;
+        case 2:
+          set_message(0b00010100);
+          break;
+        case 3:
+          set_message(0b00011000);
+          break;
+      }
+      break;
+    case HAPPINESS:
+      switch(get_happiness() / 25)
+      {
+        case 0:
+          set_message(0b00100001);
+          break;
+        case 1:
+          set_message(0b00100010);
+          break;
+        case 2:
+          set_message(0b00100100);
+          break;
+        case 3:
+          set_message(0b00101000);
+          break;
+        }
+      break;
+    case ENERGY:
+      switch(get_energy() / 25)
+      {
+        case 0:
+          set_message(0b01000001);
+          break;
+        case 1:
+          set_message(0b01000010);
+          break;
+        case 2:
+          set_message(0b01000100);
+          break;
+        case 3:
+          set_message(0b01001000);
+          break;
+      }
+    break;
+  } 
+}
+
+void character::set_message(char message_choice)
+{
+  message = message_choice;
+}
+
+char character::get_message()
+{
+  return message;
+}
 
