@@ -70,9 +70,22 @@ def news_feed():
 @app.route('/profile')
 def user_profile():
     backend_database = getDatabase(app.config["DATABASE"])
-    cursor = backend_database.execute('select nickname, hunger, happiness, energy from characters order by nickname desc')
+    cursor = backend_database.execute('select hw_id, hunger, happiness, energy from characters order by hw_id desc')
     character_list = cursor.fetchall()
-    return render_template('profile.html', chars=character_list)
+    character_dict = {}
+    if character_list != []:
+        character_dict = {'name': character_list[0], 'values': [character_list[1], character_list[2], character_list[3]]}
+    return render_template('profile.html', chars=character_dict)
+
+
+@app.route('/new_char', methods=['POST'])
+def new_character():
+    db = getDatabase(app.config["DATABASE"])
+    db.execute('insert into island_of_misfit_mupets (hw_id, hunger, happiness, energy) values (?, ?, ?, ?)',
+                request.form['id'], request.form['hunger'], request.form['happiness'], request.form['energy'])
+    db.commit()
+    flash("New character added.")
+    return "Something"
 
 
 @app.route('/addCharacter', methods=['POST'])
@@ -81,7 +94,7 @@ def add_character():
         abort(401)
     db = getDatabase(app.config["DATABASE"])
     # also grab the unassigned characters in connected nodes
-    #db.execute('insert into characters (hw_id, hunger, happiness, energy) values (?, ?)',
+    # db.execute('insert into characters (hw_id, hunger, happiness, energy) values (?, ?)',
     #           [request.form[]])
     db.commit()
     flash('Added a new character!')
