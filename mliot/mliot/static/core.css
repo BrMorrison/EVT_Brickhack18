@@ -27,6 +27,11 @@ h1.banner {
   line-height: 100px;
 }
 
+img.profile_pic {
+  height: 32px;
+  width: 32px;
+}
+
 body {
   background-color: var(--BGColor);
 }

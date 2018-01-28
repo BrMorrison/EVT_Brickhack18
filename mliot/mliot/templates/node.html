@@ -20,7 +20,7 @@
     </tr>
     {% for values in chars %}
     <tr>
-      <td>image</td>
+      <td><img src="../static/images/meh1.png" class="profile_pic"/></td>
       <td>{{ values[0] }}</td>
       {% if owner != "None" %}
       <td>{{ owner }}</td>
@@ -33,11 +33,6 @@
     </tr>
     {% endfor %}
   </table>
-  <div>
-    <button type="button" onclick=OnClick()>Click Me!</button>
-    <button type="button" onClick=getCharId()>Add Pet</button>
-  </div>
-
 </body>
 </html>
 

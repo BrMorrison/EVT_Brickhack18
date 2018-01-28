@@ -14,10 +14,20 @@
 div.feedPost {
   background-color: var(--ButtonColor);
   font-size: 12pt;
-  padding: 25px;
+  padding: 20px;
   display: inline-block;
   margin: 10px 15px;
   border-radius: 20%;
+  vertical-align: middle;
+}
+
+b.userID {
+  margin-left: 10px;
+}
+
+img {
+  height: 40px;
+  width: 40px;
 }
 
 i.timestamp {

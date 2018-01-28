@@ -7,12 +7,14 @@
 <body>
 
   <div class="banner">
-    <h1 class="banner">{{ user }}'s Profile</h1>
+    <img align=left src="../static/images/cat.gif" style="margin-left: 70px; height: 100px"/>
+    <h1 class="banner" style="margin-left: 180px; text-align: left;">{{ user }}.</h1>
   </div>
   <h3>Your μPets</h3>
 
   <table>
     <tr>
+      <th/>
       <th>μPet</th>
       <th>Hunger</th>
       <th>Happiness</th>
@@ -20,6 +22,7 @@
     </tr>
     {% for char in chars %}
     <tr>
+      <td><img src="../static/images/meh1.png" class="profile_pic"/></td>
       <td>{{ char['id'] }}</td>
       <td>{{ char['hunger'] }}</td>
       <td>{{ char['happiness'] }}</td>
@@ -27,11 +30,6 @@
     </tr>
     {% endfor %}
   </table>
-
-  <div>
-    <button type="button" onclick=OnClick()>Click Me!</button>
-    <button type="button" onClick=getCharId()>Add Pet</button>
-  </div>
 
 </body>
 </html>

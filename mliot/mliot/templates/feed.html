@@ -13,8 +13,9 @@
   <div id="myFeed">
     {% for update in updates %}
     <div class="feedPost">
-      <b>{{ update['user'] }}:</b>
-      {{ update['message'] }}   
+      <img src="../static/images/happy1.png" align="left"/>
+      <b class="userID">{{ update['user'] }}:</b>
+      {{ update['message'] }}
       <i class="timestamp">{{ update['time'] }}</i>
     </div>
     <br>
