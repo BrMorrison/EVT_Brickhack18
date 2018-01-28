@@ -5,7 +5,8 @@ create table characters (
     hunger integer default 0,
     happiness integer default 0,
     energy integer default 0,
-    owner integer default 0
+    owner integer default 0,
+    image_no integer default 0
 );
 
 drop table if exists status_updates;
