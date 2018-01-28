@@ -1,10 +1,25 @@
 
 #myFeed {
-  background-color: var(--ButtonColor);
-  border: 2px solid grey;
+  background-color: var(--FeedColor);
+  color: var(--FeedText);
+  border: 2px solid var(--BorderColor);
   height: 500px;
-  width: 70%;
-  color: white;
-  text-align: center;
+  width: 50%;
+  text-align: left;
+  margin: 50px auto;
   overflow: auto;
+  border-radius: 5%;
+}
+
+div.feedPost {
+  background-color: var(--ButtonColor);
+  font-size: 12pt;
+  padding: 25px;
+  display: inline-block;
+  margin: 10px 15px;
+  border-radius: 20%;
+}
+
+i.timestamp {
+  font-size: 7pt;
 }

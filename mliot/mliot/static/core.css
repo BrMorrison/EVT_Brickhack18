@@ -9,6 +9,8 @@
   --TableColor: hsl(100, 60%, 10%);
 
   --ButtonColor: hsl(200, 50%, 70%);
+  --FeedColor: hsl(150, 10%, 80%);
+  --FeedText: hsl(150, 10%, 20%);
 }
 
 .banner {

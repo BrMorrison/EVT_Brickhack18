@@ -11,6 +11,14 @@
   </div>
 
   <div id="myFeed">
+    {% for update in updates %}
+    <div class="feedPost">
+      <b>{{ update['user'] }}:</b>
+      {{ update['message'] }}   
+      <i class="timestamp">{{ update['time'] }}</i>
+    </div>
+    <br>
+    {% endfor %}
   </div>
 </body>
 </html>
