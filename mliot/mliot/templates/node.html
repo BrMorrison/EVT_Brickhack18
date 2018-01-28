@@ -18,18 +18,18 @@
       <th>Happiness</th>
       <th>Energy</th>
     </tr>
-    {% for values in chars %}
+    {% for i in range(chars.__len__()) %}
     <tr>
-      <td><img src="../static/images/meh1.png" class="profile_pic"/></td>
-      <td>{{ values[0] }}</td>
-      {% if owner != "None" %}
-      <td>{{ owner }}</td>
+      <td><img src={{ imgs[i] }} class="profile_pic"/></td>
+      <td>{{ chars[i][0] }}</td>
+      {% if chars[i][5] != 0 %}
+      <td>{{ chars[i][5] }}</td>
       {% else %}
       <td><button type="button">Claim</button></td>
       {% endif %}
-      <td>{{ values[1] }}</td>
-      <td>{{ values[2] }}</td>
-      <td>{{ values[3] }}</td>
+      <td>{{ chars[i][1] }}</td>
+      <td>{{ chars[i][2] }}</td>
+      <td>{{ chars[i][3] }}</td>
     </tr>
     {% endfor %}
   </table>

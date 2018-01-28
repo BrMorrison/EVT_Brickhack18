@@ -21,13 +21,17 @@
       <th>Energy</th>
     </tr>
     {% for char in chars %}
-    <tr>
-      <td><img src="../static/images/meh1.png" class="profile_pic"/></td>
-      <td>{{ char['id'] }}</td>
-      <td>{{ char['hunger'] }}</td>
-      <td>{{ char['happiness'] }}</td>
-      <td>{{ char['energy'] }}</td>
-    </tr>
+      {% if char['owner'] != 0 %}
+        <tr>
+          <td>
+            <img src={{ char['image'] }} class="profile_pic"/>
+          </td>
+          <td>{{ char['id'] }}</td>
+          <td>{{ char['hunger'] }}</td>
+          <td>{{ char['happiness'] }}</td>
+          <td>{{ char['energy'] }}</td>
+        </tr>
+      {% endif %}
     {% endfor %}
   </table>
 

@@ -14,6 +14,7 @@ app.config.update(dict(
 
 app.config.from_envvar('MLIOT_SETTINGS', silent=True)
 
+IMAGES = ["DrewFace.png", "happy1.png", "meh1.png", "mad1.png"]
 
 def connectDatabase(db_path):
     """
@@ -72,21 +73,27 @@ def news_feed():
 @app.route('/profile')
 def user_profile():
     backend_database = getDatabase(app.config["DATABASE"])
-    cursor = backend_database.execute('select hw_id, hunger, happiness, energy from characters order by hw_id desc')
+    cursor = backend_database.execute('select hw_id, hunger, happiness, energy, image_no, owner from characters order by hw_id desc')
     character_data = cursor.fetchall()
     # print(tuple(character_list[0]))
     character_list = []
     for datum in character_data:
-        character_list += [{'id':tuple(datum)[0], 'hunger':tuple(datum)[1], 'happiness':tuple(datum)[2], 'energy':tuple(datum)[3]}]
+        img_src = "../static/images/" + IMAGES[tuple(datum)[4]%len(IMAGES)]
+        character_list += [{'id':tuple(datum)[0], 'hunger':tuple(datum)[1], 'happiness':tuple(datum)[2], 'energy':tuple(datum)[3], 'image':img_src, 'owner':tuple(datum)[5]}]
+
     return render_template('profile.html', chars=character_list)
+    #return render_template('profile.html', chars=character_data)
 
 
 @app.route('/node')
 def node_profile():
     db = getDatabase(app.config["DATABASE"])
-    cursor = db.execute('select hw_id, hunger, happiness, energy from characters order by hw_id asc')
+    cursor = db.execute('select hw_id, hunger, happiness, energy, image_no, owner from characters order by hw_id asc')
     char_list = cursor.fetchall()
-    return render_template('node.html', chars=char_list, owner="Test")
+    imgs = []
+    for charl in char_list:
+        imgs.append("../static/images/" + IMAGES[charl[4]%len(IMAGES)])
+    return render_template('node.html', chars=char_list, imgs=imgs)
 
 
 @app.route('/new_char', methods=['GET', 'POST'])
@@ -96,6 +103,7 @@ def new_character():
 
     # get the values from the request
     my_id = int(request.args.get('id'))
+    my_image = my_id
     my_hunger = int(request.args.get('hunger'))
     my_happiness = int(request.args.get('happiness'))
     my_energy = int(request.args.get('energy'))
@@ -116,8 +124,8 @@ def new_character():
                    [my_hunger, my_happiness, my_energy, my_id])
     else:
         print("New id, adding it")
-        db.execute('insert into characters (hw_id, hunger, happiness, energy) values (?, ?, ?, ?)',
-                   [my_id, my_hunger, my_happiness, my_energy])
+        db.execute('insert into characters (hw_id, hunger, happiness, energy, image_no) values (?, ?, ?, ?, ?)',
+                   [my_id, my_hunger, my_happiness, my_energy, my_image])
     db.commit()
     flash("New character added.")
     return redirect(url_for('user_profile'))

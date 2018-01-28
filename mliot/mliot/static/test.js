@@ -13,3 +13,14 @@ function getCharId()
     document.getElementById('Test').innerHTML = PetId;
   }
 }
+
+function getImage(image_no)
+{
+  var ims = [
+    "DrewFace.png",
+    "happy1.png",
+    "meh1.png",
+    "mad1.png"];
+
+    return "../statics/images/" + ims[image_no % ims.length]
+}
