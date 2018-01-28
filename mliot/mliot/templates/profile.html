@@ -15,19 +15,17 @@
 
   <table>
     <tr>
-      <th/>
       <th>μPet</th>
       <th>Hunger</th>
       <th>Happiness</th>
       <th>Energy</th>
     </tr>
-    {% for values in chars %}
+    {% for char in chars %}
     <tr>
-      <td>image</td>
-      <td>{{ values[0] }}</td>
-      <td>{{ values[1] }}</td>
-      <td>{{ values[2] }}</td>
-      <td>{{ values[3] }}</td>
+      <td>{{ char['id'] }}</td>
+      <td>{{ char['hunger'] }}</td>
+      <td>{{ char['happiness'] }}</td>
+      <td>{{ char['energy'] }}</td>
     </tr>
     {% endfor %}
   </table>

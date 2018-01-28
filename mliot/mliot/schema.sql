@@ -4,7 +4,8 @@ create table characters (
     hw_id integer not null,
     hunger integer default 0,
     happiness integer default 0,
-    energy integer default 0
+    energy integer default 0,
+    owner integer default 0
 );
 
 /*
