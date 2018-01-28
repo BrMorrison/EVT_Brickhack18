@@ -1,17 +1,30 @@
 :root {
   --HeaderColor: Tomato;
-  --TableColor: #000000;
+  --BGColor: Lavender;
+  --BannerBG: Purple;
+  --BannerText: Green;
+  --TableColor: #0567C5;
+  --TextColor: #135594;
   --TextColor2: rgb(255, 255, 255);
   --TextColor3: hsla(360, 100%, 100%, 0.5);
 }
 
-body {
-  background-color: LightBlue;
+.banner {
+  background-color: var(--BannerBG);
+  color: var(--BannerText);
+}
+
+h1.banner {
+  margin: 10px;
 }
 
 h1 {
   color: var(--HeaderColor);
   text-align: center;
+}
+
+body {
+  background-color: var(--BGColor);
 }
 
 table {

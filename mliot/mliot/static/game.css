@@ -1,6 +1,6 @@
 
 #gamebutton {
-  background-color: var(TableColor);
+  background-color: var(--TableColor);
   border: none;
   color: white;
   padding: 20px;
