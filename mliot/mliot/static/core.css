@@ -1,12 +1,14 @@
 :root {
-  --HeaderColor: Tomato;
-  --BGColor: Lavender;
-  --BannerBG: Purple;
-  --BannerText: Green;
-  --TableColor: #0567C5;
-  --TextColor: #135594;
-  --TextColor2: rgb(255, 255, 255);
-  --TextColor3: hsla(360, 100%, 100%, 0.5);
+  --HeaderColor: hsl(150, 30%, 30%);
+  --BGColor: hsl(100, 8%, 85%);
+
+  --BannerBG: hsl(100, 50%, 70%);
+  --BannerText: hsl(100, 60%, 20%);
+
+  --BorderColor: hsl(100, 60%, 20%);
+  --TableColor: hsl(100, 60%, 10%);
+
+  --ButtonColor: hsl(200, 50%, 70%);
 }
 
 .banner {
@@ -14,8 +16,17 @@
   color: var(--BannerText);
 }
 
+div.banner {
+  height: 100px
+}
+
 h1.banner {
-  margin: 10px;
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+body {
+  background-color: var(--BGColor);
 }
 
 h1 {
@@ -23,9 +34,6 @@ h1 {
   text-align: center;
 }
 
-body {
-  background-color: var(--BGColor);
-}
 
 table {
   width: 80%;
@@ -44,7 +52,7 @@ td {
 
 table, th, td {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid var(--BorderColor);
   border-collapse: collapse;
 }
 

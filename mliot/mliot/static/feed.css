@@ -1,0 +1,10 @@
+
+#myFeed {
+  background-color: var(--ButtonColor);
+  border: 2px solid grey;
+  height: 500px;
+  width: 70%;
+  color: white;
+  text-align: center;
+  overflow: auto;
+}
