@@ -109,7 +109,7 @@ def new_character():
                           happiness = (?),
                           energy = (?)
                       where hw_id = (?);""",
-                   my_hunger, my_happiness, my_energy, my_id)
+                   [my_hunger, my_happiness, my_energy, my_id])
     else:
         print("New id, adding it")
         db.execute('insert into characters (hw_id, hunger, happiness, energy) values (?, ?, ?, ?)',
