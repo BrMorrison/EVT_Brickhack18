@@ -66,8 +66,7 @@ def news_feed():
     update_list = []
     for datum in update_data:
         update_list += [{'user':tuple(datum)[0], 'message':tuple(datum)[1], 'time':tuple(datum)[2]}]
-    return render_template('newsfeed.html', updates=update_list)
-    return "Hello World!"
+    return render_template('feed.html', updates=update_list)
 
 
 @app.route('/profile')
