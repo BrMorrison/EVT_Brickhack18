@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 mliot/mliot.egg-info/
 flaskr/flaskr.egg-info/
+*.db

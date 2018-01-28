@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <head>
-  <title>Profile</title>
+  <title>Node</title>
   <link rel="stylesheet" href="../static/profile.css">
 </head>
 <body>
 
-  <h1>{{ USER }}'s Profile</h1>
-  <h3>Your μPets</h3>
+  <h1>Node</h1>
 
   <table>
     <tr>
       <th/>
       <th>μPet</th>
+      <th>Owner</th>
       <th>Hunger</th>
       <th>Happiness</th>
       <th>Energy</th>
     </tr>
-    {% for char in chars %}
+    {% for values in chars %}
     <tr>
-      <td>{{ char['id'] }}</td>
-      <td>{{ char['hunger'] }}</td>
-      <td>{{ char['happiness'] }}</td>
-      <td>{{ char['energy'] }}</td>
+      <td>image</td>
+      <td>{{ values[0] }}</td>
+      <td>owner</td>
+      <td>{{ values[1] }}</td>
+      <td>{{ values[2] }}</td>
+      <td>{{ values[3] }}</td>
+      {% if owner != "None" %}
+      <button type="button">Claim</button>
+      {% endif %}
     </tr>
     {% endfor %}
   </table>

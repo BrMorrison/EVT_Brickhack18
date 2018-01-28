@@ -19,7 +19,7 @@ def connectDatabase(db_path):
     Connects to the application database.
     """
     rv = sqlite3.connect(db_path)
-    rv.row_factory = sqlite3.Row 
+    rv.row_factory = sqlite3.Row
     return rv
 
 
@@ -78,6 +78,12 @@ def user_profile():
         character_list += [{'id':tuple(datum)[0], 'hunger':tuple(datum)[1], 'happiness':tuple(datum)[2], 'energy':tuple(datum)[3]}]
     return render_template('profile.html', chars=character_list)
 
+@app.route('/node')
+def node_profile():
+    db = getDatabase(app.config["DATABASE"])
+    cursor = db.execute('select hw_id, hunger, happiness, energy from characters order by hw_id desc')
+    char_list = cursor.fetchall()
+    return render_template('node.html', chars=char_list, owner="Test")
 
 @app.route('/new_char', methods=['GET', 'POST'])
 def new_character():
@@ -132,5 +138,5 @@ def add_character():
 """
 @app.route('/profile/<nickname>')
 def user_profile(nickname):
-    # 
+    #
 """

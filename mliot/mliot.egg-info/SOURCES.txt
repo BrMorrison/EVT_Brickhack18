@@ -1,0 +1,8 @@
+MANIFEST.in
+mliot/__init__.py
+mliot/mliot.py
+mliot.egg-info/PKG-INFO
+mliot.egg-info/SOURCES.txt
+mliot.egg-info/dependency_links.txt
+mliot.egg-info/requires.txt
+mliot.egg-info/top_level.txt
