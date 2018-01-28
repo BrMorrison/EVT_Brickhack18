@@ -3,9 +3,13 @@
   <title>Node</title>
   <link rel="stylesheet" href="../static/core.css">
 </head>
-<body>
 
-  <h1>Node</h1>
+<body>
+  <div class="banner">
+    <br>
+    <h1 class="banner">Node</h1>
+    <br>
+  </div>
 
   <table>
     <tr>
@@ -20,17 +24,17 @@
     <tr>
       <td>image</td>
       <td>{{ values[0] }}</td>
-      <td>owner</td>
+      {% if owner != "None" %}
+      <td>{{ owner }}</td>
+      {% else %}
+      <td><button type="button">Claim</button></td>
+      {% endif %}
       <td>{{ values[1] }}</td>
       <td>{{ values[2] }}</td>
       <td>{{ values[3] }}</td>
-      {% if owner != "None" %}
-      <button type="button">Claim</button>
-      {% endif %}
     </tr>
     {% endfor %}
   </table>
-
   <div>
     <button type="button" onclick=OnClick()>Click Me!</button>
     <button type="button" onClick=getCharId()>Add Pet</button>
