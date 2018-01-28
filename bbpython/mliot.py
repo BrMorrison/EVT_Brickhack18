@@ -1,16 +1,40 @@
-import serverInterface.py
-import bbi2c.py
+from serverInterface import *
+from bbi2c import *
+import time
 
-CharList=[]
-MasterCharList =[1,2,3,4,5,6,7,8]
 
 def main():
 	
+	MaxListSize=8
+	charList={}
+	DictFormat={'energy':0,'death':False, 'hunger':0,'happiness':0,'present':False}
+	for x in range(1,MaxListSize+1):
+		charList[x]=DictFormat
+
+	print(charList)
+
+
 
 
 	#init start
 	#Enum Bus return list of chars
+	serverAlive=False
+	timeout=3
+	for x in range(1,timeout):
+		serverAlive=pingServer()
+		if True == serverAlive:
+			break
+		time.sleep(1)
+
+	if False == serverAlive:	
+		print("ERROR: Unable To Contact Server")
+	else :
+		print("Found Response From Server")
+
+
+
 	#Establish connection with server return bool 
+
 	#if no connection try again
 	#init end
 	

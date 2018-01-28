@@ -1,8 +1,18 @@
 
+import os
 
 
-def Request():
+def pingServer():
+	hostname = "google.com" #example
+	response = os.system("ping -c 1 " + hostname + "")
+	if 0 == response:
+		return True
+	else:
+		return False
+	
+
+def setData(charlist):
 	pass
 
-def PollEnergy():
+def getData(charlist):
 	pass
