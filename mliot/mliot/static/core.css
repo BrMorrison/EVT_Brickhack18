@@ -1,0 +1,53 @@
+:root {
+  --HeaderColor: Tomato;
+  --BGColor: Lavender;
+  --BannerBG: Purple;
+  --BannerText: Green;
+  --TableColor: #0567C5;
+  --TextColor: #135594;
+  --TextColor2: rgb(255, 255, 255);
+  --TextColor3: hsla(360, 100%, 100%, 0.5);
+}
+
+.banner {
+  background-color: var(--BannerBG);
+  color: var(--BannerText);
+}
+
+h1.banner {
+  margin: 10px;
+}
+
+h1 {
+  color: var(--HeaderColor);
+  text-align: center;
+}
+
+body {
+  background-color: var(--BGColor);
+}
+
+table {
+  width: 80%;
+  margin: 5%;
+}
+
+th {
+  color: var(--TableColor);
+  font-size: 15px;
+}
+
+td {
+  color: var(--TableColor);
+  font-size: 15px;
+}
+
+table, th, td {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+div {
+  text-align: center;
+}
