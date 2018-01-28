@@ -2,6 +2,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash
 import os
 import sqlite3
+from status_messages import MESSAGE_DICT
 # from wtforms import Form, BooleanField, StringField, PasswordField, validators
 
 app = Flask(__name__)
@@ -59,11 +60,13 @@ def initdb_handler():
 
 @app.route('/')
 def news_feed():
-    # get the database
-    # db = getDatabase(app.config['DATABASE'])
-    # run the sql command to get the status updates
-    # posts = cur.fetchall()
-    # return render_template('newsfeed.html', posts=posts)
+    db = getDatabase(app.config["DATABASE"])
+    cursor = db.execute('select character, message, time_posted from status_updates order by time_posted desc')
+    update_data = cursor.fetchall()
+    update_list = []
+    for datum in update_data:
+        update_list += [{'user':tuple(datum)[0], 'message':tuple(datum)[1], 'time':tuple(datum)[2]}]
+    return render_template('newsfeed.html', updates=update_list)
     return "Hello World!"
 
 
@@ -78,12 +81,14 @@ def user_profile():
         character_list += [{'id':tuple(datum)[0], 'hunger':tuple(datum)[1], 'happiness':tuple(datum)[2], 'energy':tuple(datum)[3]}]
     return render_template('profile.html', chars=character_list)
 
+
 @app.route('/node')
 def node_profile():
     db = getDatabase(app.config["DATABASE"])
-    cursor = db.execute('select hw_id, hunger, happiness, energy from characters order by hw_id desc')
+    cursor = db.execute('select hw_id, hunger, happiness, energy from characters order by hw_id asc')
     char_list = cursor.fetchall()
     return render_template('node.html', chars=char_list, owner="Test")
+
 
 @app.route('/new_char', methods=['GET', 'POST'])
 def new_character():
@@ -126,6 +131,19 @@ def test_query_capture():
     return redirect(url_for('news_feed'))
 
 
+@app.route('/status_update', methods=['GET', 'POST'])
+def update_status():
+    message_code = request.args.get('msg')
+    hw_id = int(request.args.get('id'))
+    message_str = MESSAGE_DICT[message_code]
+
+    db = getDatabase(app.config["DATABASE"])
+    db.execute('insert into status_updates (character, message) values (?, ?)',
+               [hw_id, message_str])
+    db.commit()
+    return redirect(url_for('news_feed'))
+
+
 @app.route('/addCharacter', methods=['POST'])
 def add_character():
     # if not session.get('logged_in'):
@@ -136,10 +154,3 @@ def add_character():
               [request.form['id'], request.form['hunger'], request.form['happiness'], request.form['energy']])
     db.commit()
     flash('Added a new character!')
-
-
-"""
-@app.route('/profile/<nickname>')
-def user_profile(nickname):
-    #
-"""

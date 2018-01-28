@@ -8,11 +8,13 @@ create table characters (
     owner integer default 0
 );
 
-/*
 drop table if exists status_updates;
 create table status_updates (
-    id integer )
-*/
+    character integer not null,
+    message text not null,
+    time_posted datetime default current_timestamp
+);
+
 drop table if exists human_users;
 create table human_users (
     id integer primary key autoincrement,
