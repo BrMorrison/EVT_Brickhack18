@@ -97,7 +97,10 @@ def new_character():
     my_energy = int(request.args.get('energy'))
 
     cursor = db.execute('select hw_id from characters')
-    id_list = cursor.fetchall()
+    id_data = cursor.fetchall()
+    id_list = []
+    for datum in id_data:
+        id_list += [tuple(datum)[0]]
     if my_id in id_list:
         # don't add it, update instead
         print("Old id, updating")
