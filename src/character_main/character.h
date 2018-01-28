@@ -3,33 +3,35 @@ class character
   /*Character Class for "MyLittleIOTNode"*/
   public:
 
+    character(unsigned char deviceID = 0x00);
+
     //rebirth function
     void rebirth();
     
     //i2c data functions
-    unsigned byte get_id();
-    void set_id();
+    unsigned char get_id();
+    void set_id(unsigned char deviceID);
 
     //energy functions
     unsigned int get_energy();
-    void set_energy();
+    void set_energy(unsigned int energyValue);
     void add_energy();
     void takeAway_energy();
 
     //hunger functions;
     unsigned int get_hunger();
-    void set_hunger();
+    void set_hunger(unsigned int hungriness);
     void add_hunger();
     void takeAway_hunger();
 
     //happiness functions;
     unsigned int get_happiness();
-    void set_happiness();
+    void set_happiness(unsigned int happy);
     void add_happiness();
     void takeAway_happiness();
 
     //life functions;
-    bool getLife();
+    bool get_life();
 
     //deathCNT functions
     unsigned int get_deathCNT();
@@ -41,15 +43,15 @@ class character
     void set_faceNo(unsigned int face);
 
     //cmd functions
-    unsigned byte get_cmd();
-    void set_cmd();
+    unsigned char get_cmd();
+    void set_cmd(unsigned char command);
     
   private:
 
     char message[80];
     
-    unsigned byte i2c_id; //slave id;
-    unsigned byte cmd;    //i2c commmand;
+    unsigned char i2c_id; //slave id;
+    unsigned char cmd;    //i2c commmand;
     
     unsigned int energy;
     unsigned int hunger;

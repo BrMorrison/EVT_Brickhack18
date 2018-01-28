@@ -6,7 +6,7 @@
  *  
  */
 
-#include character.h
+#include "character.h"
 
 #define FullHunger (100)
 #define FullHappiness (100)
@@ -14,7 +14,7 @@
 #define MaxDeath (10000)
 
 //constructor for i2c slave id
-Character::Character(unsigned byte deviceID)
+character::character(unsigned char deviceID)
  :i2c_id(deviceID), deathCNT(0), faceNo(deviceID) 
  {
     rebirth();
@@ -39,8 +39,8 @@ void character::rebirth()
 /*-----------------------------------------------------------------------*/
 
 /*i2c functions*/
-unsigned byte character::get_id() {return i2c_id;}
-void character::set_id(unsigned byte deviceID) { i2c_id = deviceID;}
+unsigned char character::get_id() {return i2c_id;}
+void character::set_id(unsigned char deviceID) { i2c_id = deviceID;}
 
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
@@ -49,24 +49,27 @@ void character::set_id(unsigned byte deviceID) { i2c_id = deviceID;}
 
 /*Energy Attributes */
 unsigned int character::get_energy() { return energy;}
-void character::set_energy(unsigned int energy) { unsigned int energy = 0; }
+void character::set_energy(unsigned int energyValue) { energy = energyValue; }
 
 void character::add_energy()
 {
-  if (energy == FullEnergy)
+  if (get_life())
   {
-    energy = energy;
-  }
+    if (energy == FullEnergy)
+    {
+      energy = energy;
+    }
 
-  else
-  {
-    energy++;
+    else
+    {
+      energy++;
+    }
   }
 }
 
 void character::takeAway_energy()
 {
-  if (energy = 0)
+  if (energy == 0)
   {
     setLifeFalse(); //character is dead
   }
@@ -84,16 +87,19 @@ void character::takeAway_energy()
 
 /*Hunger Attributes */
 unsigned int character::get_hunger() {return hunger;}
-void character::set_hunger(unsigned int hungriness) { hunger = hungriness }
+void character::set_hunger(unsigned int hungriness) { hunger = hungriness; }
 
-void add_hunger()
+void character::add_hunger()
 {
-  if (hunger == FullHunger){
+  if (get_life())
+  {
+    if (hunger == FullHunger){
       hunger = hunger;
     }
-  else{
+    else{
       hunger++;
     }
+  }
 }
 
 void character::takeAway_hunger()
@@ -151,9 +157,12 @@ void character::setLifeFalse()
 {
   life = false;
   increaseDeathCNT();
+  set_hunger(0);
+  set_happiness(0);
+  set_energy(0);
 }
 void character::setLifeTrue() {life = true;}
-bool character::getLife() {return life;}
+bool character::get_life() {return life;}
 
 
 /*-----------------------------------------------------------------------*/
@@ -176,7 +185,7 @@ void character::increaseDeathCNT()
 {
   if (deathCNT == MaxDeath)
   {
-    resetDeathCNT;
+    reset_deathCNT();
   }
   else
   {
@@ -200,6 +209,6 @@ void character::set_faceNo(unsigned int face) {faceNo = face;}
 /*-----------------------------------------------------------------------*/
 
 /*cmd functions */
-unsigned byte character::get_cmd( return cmd; }
-void character::set_cmd(unsigned byte command) {cmd = command;}
+unsigned char character::get_cmd() { return cmd; }
+void character::set_cmd(unsigned char command) {cmd = command;}
 
