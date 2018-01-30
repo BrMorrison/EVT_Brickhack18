@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <title>Feed</title>
+  <link rel="stylesheet" href="../static/core.css">
+  <link rel="stylesheet" href="../static/feed.css">
+</head>
+<body>
+
+  <div class="banner">
+    <h1 class="banner">News Feed</h1>
+  </div>
+
+  <div id="myFeed">
+    {% for update in updates %}
+    <div class="feedPost">
+      <img src="../static/images/happy1.png" align="left"/>
+      <b class="userID">{{ update['user'] }}:</b>
+      {{ update['message'] }}
+      <i class="timestamp">{{ update['time'] }}</i>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+</body>
+</html>

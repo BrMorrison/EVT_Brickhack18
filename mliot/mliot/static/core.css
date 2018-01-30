@@ -1,0 +1,68 @@
+:root {
+  --HeaderColor: hsl(150, 30%, 30%);
+  --BGColor: hsl(100, 8%, 85%);
+
+  --BannerBG: hsl(100, 50%, 70%);
+  --BannerText: hsl(100, 60%, 20%);
+
+  --BorderColor: hsl(100, 60%, 20%);
+  --TableColor: hsl(100, 60%, 10%);
+
+  --ButtonColor: hsl(200, 50%, 70%);
+  --FeedColor: hsl(150, 10%, 80%);
+  --FeedText: hsl(150, 10%, 20%);
+}
+
+.banner {
+  background-color: var(--BannerBG);
+  color: var(--BannerText);
+}
+
+div.banner {
+  height: 100px
+}
+
+h1.banner {
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+img.profile_pic {
+  height: 32px;
+  width: 32px;
+}
+
+body {
+  background-color: var(--BGColor);
+}
+
+h1 {
+  color: var(--HeaderColor);
+  text-align: center;
+}
+
+
+table {
+  width: 75%;
+  margin: 5%;
+}
+
+th {
+  color: var(--TableColor);
+  font-size: 15px;
+}
+
+td {
+  color: var(--TableColor);
+  font-size: 15px;
+}
+
+table, th, td {
+  text-align: center;
+  border: 1px solid var(--BorderColor);
+  border-collapse: collapse;
+}
+
+div {
+  text-align: center;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <title>Node</title>
+  <link rel="stylesheet" href="../static/core.css">
+</head>
+
+<body>
+  <div class="banner">
+    <h1 class="banner">Node</h1>
+  </div>
+
+  <table>
+    <tr>
+      <th/>
+      <th>μPet</th>
+      <th>Owner</th>
+      <th>Hunger</th>
+      <th>Happiness</th>
+      <th>Energy</th>
+    </tr>
+    {% for i in range(chars.__len__()) %}
+    <tr>
+      <td><img src={{ imgs[i] }} class="profile_pic"/></td>
+      <td>{{ chars[i][0] }}</td>
+      {% if chars[i][5] != 0 %}
+      <td>{{ chars[i][5] }}</td>
+      {% else %}
+      <td><button type="button">Claim</button></td>
+      {% endif %}
+      <td>{{ chars[i][1] }}</td>
+      <td>{{ chars[i][2] }}</td>
+      <td>{{ chars[i][3] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+
+<script src="../static/test.js"></script>

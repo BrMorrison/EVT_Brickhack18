@@ -1,0 +1,35 @@
+
+#myFeed {
+  background-color: var(--FeedColor);
+  color: var(--FeedText);
+  border: 2px solid var(--BorderColor);
+  height: 500px;
+  width: 50%;
+  text-align: left;
+  margin: 50px auto;
+  overflow: auto;
+  border-radius: 5%;
+}
+
+div.feedPost {
+  background-color: var(--ButtonColor);
+  font-size: 12pt;
+  padding: 20px;
+  display: inline-block;
+  margin: 10px 15px;
+  border-radius: 20%;
+  vertical-align: middle;
+}
+
+b.userID {
+  margin-left: 10px;
+}
+
+img {
+  height: 40px;
+  width: 40px;
+}
+
+i.timestamp {
+  font-size: 7pt;
+}

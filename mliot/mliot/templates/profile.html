@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="../static/core.css">
+  <link rel="stylesheet" href="../static/profile.css">
+</head>
+<body>
+
+  <div class="banner">
+    <img align=left src="../static/images/cat.gif" style="margin-left: 70px; height: 100px"/>
+    <h1 class="banner" style="margin-left: 180px; text-align: left;">{{ user }}.</h1>
+  </div>
+  <h3>Your μPets</h3>
+
+  <table>
+    <tr>
+      <th/>
+      <th>μPet</th>
+      <th>Hunger</th>
+      <th>Happiness</th>
+      <th>Energy</th>
+    </tr>
+    {% for char in chars %}
+      {% if char['owner'] != 0 %}
+        <tr>
+          <td>
+            <img src={{ char['image'] }} class="profile_pic"/>
+          </td>
+          <td>{{ char['id'] }}</td>
+          <td>{{ char['hunger'] }}</td>
+          <td>{{ char['happiness'] }}</td>
+          <td>{{ char['energy'] }}</td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </table>
+
+</body>
+</html>
+
+<script src="../static/test.js"></script>
